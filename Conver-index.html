@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Conversation Topic Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #4a4a8c;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #4a4a8c;
+            border-radius: 5px;
+         .   background-color: #fff;
+            cursor: pointer;
+        }
+        select:focus {
+            outline: none;
+            border-color: #ff6f61;
+        }
+        #suggestion {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #suggestion.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        button, input[type="range"] {
+            margin-top: 15px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ff6f61;
+            color: #fff;
+        }
+        button:hover, input[type="range"]:hover {
+            background-color: #e65a50;
+        }
+        .container {
+            border-top: 4px solid #ff6f61;
+            padding-top: 20px;
+        }
+        .controls {
+            margin-top: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+        @media (max-width: 400px) {
+            body {
+                padding: 10px;
+            }
+            select, button, input[type="range"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose a Conversation Topic</h1>
+        <select id="topicSelect" aria-label="Select a conversation topic" onchange="showSuggestion()">
+            <option value="" disabled selected>Select a topic...</option>
+            <optgroup label="Open Chit Chat">
+                <option value="hobbies">Hobbies & Pastimes</option>
+                <option value="food">Food & Preferences</option>
+                <option value="movies">Movies & Series</option>
+                <option value="music">Music</option>
+                <option value="family">Family & Friends</option>
+                <option value="work_school">Work & School Life</option>
+                <option value="nostalgia">Nostalgia & Memories</option>
+                <option value="future">Future Goals & Plans</option>
+                <option value="hypothetical">Hypothetical & Fun Scenarios</option>
+                <option value="problem_solving">Collaborative Problem-Solving</option>
+                <option value="humor">Humor & Lighthearted</option>
+                <option value="philosophy">Philosophical Discussion</option>
+                <option value="fact_finding">Fact-Finding & Curiosity</option>
+            </optgroup>
+            <optgroup label="Advice & Support">
+                <option value="self_help">Self Help</option>
+                <option value="personal_dev">Personal Development</option>
+                <option value="emotional">Emotional Support</option>
+                <option value="cultural">Cultural Advice</option>
+                <option value="parenting">Parenting Support</option>
+                <option value="work_advice">Work & Professional Advice</option>
+                <option value="transitions">Life Transitions</option>
+                <option value="addiction">Addiction Recovery</option>
+                <option value="identity">Identity & Belonging</option>
+                <option value="psych_consult">Psychological Consultation</option>
+                <option value="business_insights">Business Insights</option>
+            </optgroup>
+            <optgroup label="Information-Seeking">
+                <option value="travel">Travel & Places</option>
+                <option value="cooking">Cooking & Food</option>
+                <option value="entertainment">Entertainment & Pop Culture</option>
+                <option value="sports">Sports</option>
+                <option value="diy">DIY & Home Improvement</option>
+                <option value="finance">Financial Knowledge</option>
+                <option value="business_info">Business</option>
+                <option value="tech">Tech & Engineering</option>
+                <option value="general_knowledge">General Knowledge</option>
+                <option value="civics">Civics</option>
+                <option value="politics">Politics</option>
+            </optgroup>
+            <optgroup label="Educational">
+                <option value="meditation">Meditation & Mindfulness</option>
+                <option value="psychology">Psychology & Thinking</option>
+                <option value="virtual_trip">Virtual Field Trip</option>
+            </optgroup>
+        </select>
+        <div class="controls">
+            <button onclick="showSuggestion()">Refresh Suggestion</button>
+            <button onclick="showMultipleSuggestions(3)">Show 3 Suggestions</button>
+            <button onclick="toggleLanguage('en')">English</button>
+            <button onclick="toggleLanguage('th')">Thai</button>
+            <label for="dynamicWeight">Dynamic Prompt Probability: <span id="weightValue">50%</span></label>
+            <input type="range" id="dynamicWeight" min="0" max="100" value="50">
+        </div>
+        <div id="suggestion" aria-live="polite"></div>
+    </div>
+
+    <script>
+        const select = document.getElementById('topicSelect');
+        const suggestionDiv = document.getElementById('suggestion');
+        const dynamicWeight = document.getElementById('dynamicWeight');
+        const weightValue = document.getElementById('weightValue');
+        let currentLang = 'en';
+        let lastPrompt = '';
+
+        const categoryMap = {
+            'Open Chit Chat': ['hobbies', 'food', 'movies', 'music', 'family', 'work_school', 'nostalgia', 'future', 'hypothetical', 'problem_solving', 'humor', 'philosophy', 'fact_finding'],
+            'Advice & Support': ['self_help', 'personal_dev', 'emotional', 'cultural', 'parenting', 'work_advice', 'transitions', 'addiction', 'identity', 'psych_consult', 'business_insights'],
+            'Information-Seeking': ['travel', 'cooking', 'entertainment', 'sports', 'diy', 'finance', 'business_info', 'tech', 'general_knowledge', 'civics', 'politics'],
+            'Educational': ['meditation', 'psychology', 'virtual_trip']
+        };
+
+        // Define prompts for all topics to avoid undefined errors
+        const basePrompts = {
+            hobbies: ["What do you love doing on a free weekend?", "Any new hobbies you’re curious about?", "What’s your go-to way to unwind?"],
+            food: ["What’s your favorite dish to eat or cook?", "Are you a fan of spicy or mild flavors?", "What’s the best street food you’ve tried?"],
+            movies: ["Which movie genre do you prefer, comedy or drama?", "Have you seen any good films recently?", "What’s a film that left an impression?"],
+            music: ["What kind of music do you listen to most?", "Who’s your favorite artist or band?", "Do you play any instruments?"],
+            family: ["What’s your favorite family tradition?", "How often do you spend time with family?", "What’s a fun family memory?"],
+            work_school: ["What do you do for work or study?", "What’s the most interesting project you’ve worked on?", "How do you balance work and life?"],
+            nostalgia: ["What’s a childhood memory you cherish?", "What old trend do you miss?", "What’s a game you loved as a kid?"],
+            future: ["Where do you see yourself in 5 years?", "What’s a big goal you’re working towards?", "What’s a dream you hope to achieve?"],
+            hypothetical: ["If you could time travel, where would you go?", "What superpower would you choose?", "If you could live anywhere, where would it be?"],
+            problem_solving: ["How would you solve a community issue?", "What’s a creative solution to a common problem?", "How do you approach challenges?"],
+            humor: ["What’s the funniest thing that’s happened to you?", "Do you have a favorite joke?", "What always makes you laugh?"],
+            philosophy: ["What does happiness mean to you?", "Do you think life has a purpose?", "What’s a deep thought you’ve had recently?"],
+            fact_finding: ["What’s something new you learned recently?", "What’s a topic you’re curious about?", "What’s an interesting fact you know?"],
+            self_help: ["What helps you stay motivated?", "How do you manage stress?", "What’s a self-improvement tip you follow?"],
+            personal_dev: ["What skill are you trying to develop?", "How do you set personal goals?", "What’s a book that changed your perspective?"],
+            emotional: ["How do you cope with tough days?", "What cheers you up when you’re sad?", "Who do you turn to for support?"],
+            cultural: ["What’s a cultural tradition you value?", "Have you experienced a different culture?", "What’s a cultural dish you love?"],
+            parenting: ["What’s the hardest part of parenting?", "What’s a parenting tip you swear by?", "What’s a fun activity to do with kids?"],
+            work_advice: ["How do you handle workplace stress?", "What’s a career tip you’ve learned?", "How do you negotiate at work?"],
+            transitions: ["How did you handle a big life change?", "What’s a tip for moving to a new place?", "How do you adapt to change?"],
+            addiction: ["What helped you or someone overcome a challenge?", "What resources do you recommend for support?", "How do you stay strong during recovery?"],
+            identity: ["How do you define yourself?", "What’s a personal value you hold dear?", "How has your identity shaped your life?"],
+            psych_consult: ["What helps with mental clarity?", "How do you manage anxiety?", "What’s a mindfulness technique you use?"],
+            business_insights: ["What’s a key to business success?", "How do you approach business risks?", "What’s a trend in business you’ve noticed?"],
+            travel: ["What’s your favorite travel destination?", "What’s a place on your bucket list?", "What’s a travel tip you swear by?"],
+            cooking: ["What’s a recipe you love to make?", "What’s your go-to quick meal?", "Do you have a cooking hack?"],
+            entertainment: ["What’s a show you’re hooked on?", "Who’s a celebrity you admire?", "What’s a trend in entertainment you follow?"],
+            sports: ["What’s your favorite sport to watch or play?", "Who’s your favorite athlete?", "What’s a memorable game you’ve seen?"],
+            diy: ["What’s a DIY project you’ve done?", "What’s a home improvement tip?", "What tools do you recommend for beginners?"],
+            finance: ["How do you save money effectively?", "What’s a budgeting tip you use?", "What’s your advice on investing?"],
+            business_info: ["What’s a business model you admire?", "How do startups succeed?", "What’s a key to customer satisfaction?"],
+            tech: ["What’s a gadget you can’t live without?", "What’s a tech trend you’re excited about?", "How do you stay updated on tech news?"],
+            general_knowledge: ["What’s an interesting fact you know?", "What’s a topic you enjoy learning about?", "What’s a book you’d recommend?"],
+            civics: ["What’s a civic issue you care about?", "How do you stay informed about local policies?", "What’s the importance of voting to you?"],
+            politics: ["What’s a political issue you follow?", "How do you discuss politics respectfully?", "What change would you like to see in government?"],
+            meditation: ["What’s a meditation practice you follow?", "How does mindfulness help you?", "What’s a tip for beginners in meditation?"],
+            psychology: ["What’s a psychological concept you find interesting?", "How do you think the mind works under stress?", "What’s a behavior you’ve noticed in others?"],
+            virtual_trip: ["What’s a place you’d love to explore virtually?", "How do virtual tours compare to real travel?", "What’s a virtual museum you’ve visited?"]
+        };
+
+        const basePromptsThai = {
+            hobbies: ["คุณชอบทำอะไรในวันหยุดสุดสัปดาห์?", "มีงานอดิเรกใหม่ที่อยากลองไหม?", "คุณผ่อนคลายหลังจากวันที่ยาวนานด้วยวิธีใด?"],
+            food: ["อาหารจานโปรดที่คุณชอบกินหรือทำคืออะไร?", "คุณชอบอาหารรสเผ็ดหรือรสอ่อนมากกว่ากัน?", "อาหารข้างทางที่อร่อยที่สุดที่คุณเคยลองคืออะไร?"],
+            movies: ["คุณชอบหนังประเภทไหนมากกว่าระหว่างหนังตลกหรือดราม่า?", "คุณได้ดูหนังดีๆ เมื่อไม่นานนี้หรือไม่?", "มีหนังเรื่องไหนที่สร้างความประทับใจให้คุณบ้าง?"],
+            music: ["คุณชอบฟังเพลงแนวไหนมากที่สุด?", "ศิลปินหรือวงดนตรีที่คุณชื่นชอบคือใคร?", "คุณเล่นเครื่องดนตรีอะไรได้บ้าง?"],
+            family: ["ประเพณีครอบครัวที่คุณชื่นชอบคืออะไร?", "คุณใช้เวลากับครอบครัวบ่อยแค่ไหน?", "ความทรงจำสนุกๆ กับครอบครัวของคุณคืออะไร?"],
+            work_school: ["คุณทำงานหรือเรียนอะไร?", "โปรเจกต์ที่น่าสนใจที่สุดที่คุณเคยทำคืออะไร?", "คุณจัดการสมดุลระหว่างงานและชีวิตอย่างไร?"],
+            nostalgia: ["ความทรงจำในวัยเด็กที่คุณหวงแหนคืออะไร?", "คุณคิดถึงเทรนด์เก่าๆ อะไรบ้าง?", "เกมที่คุณชอบเล่นตอนเด็กคืออะไร?"],
+            future: ["คุณเห็นตัวเองในอีก 5 ปีข้างหน้าอยู่ที่ไหน?", "เป้าหมายใหญ่ที่คุณกำลังพยายามคืออะไร?", "ความฝันที่คุณหวังจะทำให้สำเร็จคืออะไร?"],
+            hypothetical: ["ถ้าคุณเดินทางข้ามเวลาได้ คุณจะไปที่ไหน?", "คุณอยากมีพลังวิเศษอะไร?", "ถ้าคุณสามารถอาศัยอยู่ที่ไหนก็ได้ คุณจะเลือกที่ไหน?"],
+            problem_solving: ["คุณจะแก้ปัญหาชุมชนอย่างไร?", "วิธีแก้ปัญหาทั่วไปอย่างสร้างสรรค์คืออะไร?", "คุณรับมือกับความท้าทายอย่างไร?"],
+                        humor: ["เรื่องตลกที่สุดที่เกิดขึ้นกับคุณคืออะไร?", "คุณมีเรื่องตลกที่ชอบเล่าหรือไม่?", "อะไรที่ทำให้คุณหัวเราะได้เสมอ?"],
+            philosophy: ["ความสุขหมายถึงอะไรสำหรับคุณ?", "คุณคิดว่าชีวิตมีจุดมุ่งหมายหรือไม่?", "ความคิดลึกซึ้งที่คุณเคยคิดคืออะไร?"],
+            fact_finding: ["อะไรที่คุณเพิ่งเรียนรู้มาเมื่อเร็วๆ นี้?", "หัวข้อที่คุณอยากรู้คืออะไร?", "ข้อเท็จจริงที่น่าสนใจที่คุณรู้คืออะไร?"],
+            self_help: ["อะไรช่วยให้คุณมีแรงจูงใจ?", "คุณจัดการกับความเครียดอย่างไร?", "เคล็ดลับการพัฒนาตัวเองที่คุณใช้คืออะไร?"],
+            personal_dev: ["ทักษะอะไรที่คุณกำลังพยายามพัฒนา?", "คุณตั้งเป้าหมายส่วนตัวอย่างไร?", "หนังสือเล่มไหนที่เปลี่ยนมุมมองของคุณ?"],
+            emotional: ["คุณรับมือกับวันที่ยากลำบากอย่างไร?", "อะไรที่ทำให้คุณอารมณ์ดีเมื่อคุณเศร้า?", "คุณหันไปพึ่งใครเมื่อต้องการการสนับสนุน?"],
+            cultural: ["ประเพณีทางวัฒนธรรมที่คุณให้ความสำคัญคืออะไร?", "คุณเคยสัมผัสวัฒนธรรมที่แตกต่างหรือไม่?", "อาหารทางวัฒนธรรมที่คุณชอบคืออะไร?"],
+            parenting: ["ส่วนที่ยากที่สุดของการเป็นพ่อแม่คืออะไร?", "เคล็ดลับการเลี้ยงลูกที่คุณเชื่อมั่นคืออะไร?", "กิจกรรมสนุกๆ ที่ทำกับเด็กๆ คืออะไร?"],
+            work_advice: ["คุณจัดการกับความเครียดในที่ทำงานอย่างไร?", "เคล็ดลับในอาชีพที่คุณเรียนรู้คืออะไร?", "คุณเจรจาในที่ทำงานอย่างไร?"],
+            transitions: ["คุณรับมือกับการเปลี่ยนแปลงครั้งใหญ่ในชีวิตอย่างไร?", "เคล็ดลับสำหรับการย้ายไปที่ใหม่คืออะไร?", "คุณปรับตัวกับการเปลี่ยนแปลงอย่างไร?"],
+            addiction: ["อะไรที่ช่วยคุณหรือคนอื่นเอาชนะความท้าทาย?", "คุณแนะนำแหล่งข้อมูลใดสำหรับการสนับสนุน?", "คุณรักษาความเข้มแข็งในช่วงฟื้นตัวอย่างไร?"],
+            identity: ["คุณนิยามตัวเองอย่างไร?", "ค่านิยมส่วนตัวที่คุณยึดมั่นคืออะไร?", "ตัวตนของคุณหล่อหลอมชีวิตคุณอย่างไร?"],
+            psych_consult: ["อะไรที่ช่วยให้จิตใจปลอดโปร่ง?", "คุณจัดการกับความวิตกกังวลอย่างไร?", "เทคนิคการมีสติที่คุณใช้คืออะไร?"],
+            business_insights: ["กุญแจสู่ความสำเร็จในธุรกิจคืออะไร?", "คุณรับมือกับความเสี่ยงในธุรกิจอย่างไร?", "เทรนด์ในธุรกิจที่คุณสังเกตเห็นคืออะไร?"],
+            travel: ["สถานที่ท่องเที่ยวที่คุณชื่นชอบคือที่ไหน?", "สถานที่ในลิสต์ที่อยากไปคือที่ไหน?", "เคล็ดลับการท่องเที่ยวที่คุณเชื่อมั่นคืออะไร?"],
+            cooking: ["สูตรอาหารที่คุณชอบทำคืออะไร?", "มื้อด่วนที่คุณเลือกคืออะไร?", "คุณมีเคล็ดลับการทำอาหารไหม?"],
+            entertainment: ["รายการที่คุณติดตามคืออะไร?", "คนดังที่คุณชื่นชมคือใคร?", "เทรนด์ในวงการบันเทิงที่คุณติดตามคืออะไร?"],
+            sports: ["กีฬาที่คุณชอบดูหรือเล่นคืออะไร?", "นักกีฬาที่คุณชื่นชอบคือใคร?", "เกมที่น่าจดจำที่คุณเคยเห็นคืออะไร?"],
+            diy: ["โปรเจกต์ DIY ที่คุณเคยทำคืออะไร?", "เคล็ดลับการปรับปรุงบ้านคืออะไร?", "เครื่องมือที่คุณแนะนำสำหรับมือใหม่คืออะไร?"],
+            finance: ["คุณประหยัดเงินอย่างมีประสิทธิภาพได้อย่างไร?", "เคล็ดลับการทำงบประมาณที่คุณใช้คืออะไร?", "คำแนะนำเกี่ยวกับการลงทุนของคุณคืออะไร?"],
+            business_info: ["โมเดลธุรกิจที่คุณชื่นชมคืออะไร?", "สตาร์ทอัพประสบความสำเร็จได้อย่างไร?", "กุญแจสู่ความพึงพอใจของลูกค้าคืออะไร?"],
+            tech: ["อุปกรณ์ที่คุณขาดไม่ได้คืออะไร?", "เทรนด์เทคโนโลยีที่คุณตื่นเต้นคืออะไร?", "คุณอัปเดตข่าวเทคโนโลยีอย่างไร?"],
+            general_knowledge: ["ข้อเท็จจริงที่น่าสนใจที่คุณรู้คืออะไร?", "หัวข้อที่คุณชอบเรียนรู้คืออะไร?", "หนังสือที่คุณแนะนำคือเล่มไหน?"],
+            civics: ["ประเด็นพลเมืองที่คุณใส่ใจคืออะไร?", "คุณติดตามนโยบายท้องถิ่นอย่างไร?", "ความสำคัญของการลงคะแนนสำหรับคุณคืออะไร?"],
+            politics: ["ประเด็นการเมืองที่คุณติดตามคืออะไร?", "คุณสนทนาการเมืองอย่างเคารพกันอย่างไร?", "การเปลี่ยนแปลงที่คุณอยากเห็นในรัฐบาลคืออะไร?"],
+            meditation: ["การฝึกสมาธิที่คุณทำคืออะไร?", "การมีสติช่วยคุณอย่างไร?", "เคล็ดลับสำหรับมือใหม่ในการทำสมาธิคืออะไร?"],
+            psychology: ["แนวคิดทางจิตวิทยาที่คุณสนใจคืออะไร?", "คุณคิดว่าจิตใจทำงานอย่างไรภายใต้ความเครียด?", "พฤติกรรมใดที่คุณสังเกตเห็นในคนอื่น?"],
+            virtual_trip: ["สถานที่ที่คุณอยากสำรวจแบบเสมือนจริงคือที่ไหน?", "ทัวร์เสมือนจริงเปรียบเทียบกับการเดินทางจริงอย่างไร?", "พิพิธภัณฑ์เสมือนที่คุณเคยเยี่ยมชมคือที่ไหน?"]
+        };
+
+        const dynamicTemplates = {
+            'Open Chit Chat': {
+                hobbies: ['What’s a {activity} you enjoy during {time}?', 'Ever tried a {cultural} hobby like {example}?', 'How do you spend a {adjective} day off?'],
+                food: ['What’s a {type} dish you’d cook for {occasion}?', 'Do you prefer {flavor1} or {flavor2} in your food?', 'What’s a {place} food you crave?'],
+                movies: ['What’s a {adjective} movie you’ve watched at {place}?', 'Do you like {type} movies during {time}?', 'What’s a {cultural} film you’ve enjoyed?'],
+                music: ['What {type} of music do you enjoy at {time}?', 'Have you attended a {cultural} music event?', 'Who’s a {adjective} artist you like?'],
+                family: ['What’s a {adjective} family tradition during {time}?', 'How do you celebrate with family at {place}?', 'What’s a {cultural} family event you enjoy?'],
+                work_school: ['What’s a {adjective} project you’ve done at {place}?', 'How do you manage {type} tasks during {time}?', 'What’s a {cultural} aspect of your work or school?'],
+                nostalgia: ['What’s a {adjective} memory from your childhood at {place}?', 'What {type} game did you play during {time}?', 'What’s a {cultural} trend you miss?'],
+                future: ['What {adjective} goals do you have for {time}?', 'Where do you want to be at {place} in the future?', 'What {cultural} dream do you have?'],
+                hypothetical: ['If you could travel to {place}, what would you do?', 'What {type} of superpower would be {adjective}?', 'Imagine a {cultural} scenario, what would you choose?'],
+                problem_solving: ['How would you solve a {type} issue at {place}?', 'What {adjective} solution works during {time}?', 'What’s a {cultural} approach to problem-solving?'],
+                humor: ['What’s a {adjective} joke you’ve heard at {place}?', 'What {type} of humor do you enjoy during {time}?', 'What’s a {cultural} funny story you know?'],
+                philosophy: ['What’s a {adjective} thought you’ve had at {place}?', 'What {type} of meaning do you seek during {time}?', 'What’s a {cultural} philosophical idea you ponder?'],
+                fact_finding: ['What {adjective} fact did you learn at {place}?', 'What {type} of topic are you curious about during {time}?', 'What’s a {cultural} fact you’ve discovered?']
+            },
+            'Advice & Support': {
+                self_help: ['What’s a {adjective} way to stay motivated at {place}?', 'How do you handle {type} stress during {time}?', 'What’s a {cultural} self-help tip?'],
+                personal_dev: ['What {adjective} skill are you building at {place}?', 'What {type} of growth do you seek during {time}?', 'What’s a {cultural} personal development idea?'],
+                emotional: ['What’s a {adjective} way to cheer up at {place}?', 'How do you manage {type} emotions during {time}?', 'What’s a {cultural} emotional support method?'],
+                cultural: ['What’s a {adjective} cultural lesson from {place}?', 'What {type} of cultural event did you attend during {time}?', 'What’s a {cultural} tradition you value?'],
+                parenting: ['What’s a {adjective} parenting tip for {place}?', 'How do you handle {type} parenting challenges during {time}?', 'What’s a {cultural} parenting practice you follow?'],
+                work_advice: ['What’s a {adjective} career tip for {place}?', 'How do you tackle {type} work issues during {time}?', 'What’s a {cultural} professional approach?'],
+                transitions: ['What’s a {adjective} way to adapt at {place}?', 'How do you manage {type} changes during {time}?', 'What’s a {cultural} transition strategy?'],
+                addiction: ['What’s a {adjective} recovery method at {place}?', 'How do you handle {type} struggles during {time}?', 'What’s a {cultural} support system for recovery?'],
+                identity: ['What’s a {adjective} aspect of your identity at {place}?', 'How do you express {type} values during {time}?', 'What’s a {cultural} identity story you have?'],
+                                psych_consult: ['What’s a {adjective} mental health tip for {place}?', 'How do you manage {type} thoughts during {time}?', 'What’s a {cultural} mindfulness technique?'],
+                business_insights: ['What’s a {adjective} business strategy for {place}?', 'How do you approach {type} risks during {time}?', 'What’s a {cultural} business insight?']
+            },
+            'Information-Seeking': {
+                travel: ['What’s a {adjective} destination at {place}?', 'What {type} of travel do you enjoy during {time}?', 'What’s a {cultural} travel spot you recommend?'],
+                cooking: ['What’s a {adjective} recipe from {place}?', 'What {type} of dish do you cook during {time}?', 'What’s a {cultural} cooking tip?'],
+                entertainment: ['What’s a {adjective} show at {place}?', 'What {type} of entertainment do you enjoy during {time}?', 'What’s a {cultural} trend in entertainment?'],
+                sports: ['What’s a {adjective} sport to watch at {place}?', 'What {type} of game do you follow during {time}?', 'What’s a {cultural} sports event you like?'],
+                diy: ['What’s a {adjective} DIY project for {place}?', 'What {type} of improvement do you do during {time}?', 'What’s a {cultural} crafting idea?'],
+                finance: ['What’s a {adjective} saving tip for {place}?', 'What {type} of budgeting do you use during {time}?', 'What’s a {cultural} financial practice?'],
+                business_info: ['What’s a {adjective} business idea for {place}?', 'What {type} of model works during {time}?', 'What’s a {cultural} business approach?'],
+                                tech: ['What’s a {adjective} gadget for {place}?', 'What {type} of tech do you follow during {time}?', 'What’s a {cultural} tech innovation you’ve seen?'],
+                general_knowledge: ['What’s a {adjective} fact you learned about {place}?', 'What {type} of knowledge do you seek during {time}?', 'What’s a {cultural} tidbit you know?'],
+                civics: ['What’s a {adjective} civic issue in {place}?', 'What {type} of policy do you follow during {time}?', 'What’s a {cultural} civic duty you value?'],
+                politics: ['What’s a {adjective} political topic in {place}?', 'What {type} of debate do you engage in during {time}?', 'What’s a {cultural} political perspective you’ve heard?']
+            },
+            'Educational': {
+                meditation: ['What’s a {adjective} meditation practice for {place}?', 'What {type} of mindfulness do you do during {time}?', 'What’s a {cultural} meditation technique?'],
+                psychology: ['What’s a {adjective} psychological concept from {place}?', 'What {type} of mental study interests you during {time}?', 'What’s a {cultural} psychological insight?'],
+                virtual_trip: ['What’s a {adjective} virtual destination at {place}?', 'What {type} of virtual tour do you enjoy during {time}?', 'What’s a {cultural} virtual experience you’ve had?']
+            }
+        };
+
+        const dynamicTemplatesThai = {
+            'Open Chit Chat': {
+                hobbies: ['คุณชอบทำ{activity}ในช่วง{time}หรือไม่?', 'เคยลองงานอดิเรก{cultural}เช่น{example}หรือไม่?', 'คุณใช้เวลาวันหยุด{adjective}อย่างไร?'],
+                food: ['คุณจะทำอาหาร{type}สำหรับ{occasion}อะไร?', 'คุณชอบรส{flavor1}หรือ{flavor2}ในอาหารไทย?', 'อาหาร{place}ที่คุณอยากกินคืออะไร?'],
+                movies: ['หนัง{adjective}ที่คุณดูที่{place}คืออะไร?', 'คุณชอบหนัง{type}ในช่วง{time}หรือไม่?', 'หนัง{cultural}ที่คุณชอบคืออะไร?'],
+                music: ['คุณชอบเพลง{type}ในช่วง{time}หรือไม่?', 'เคยไปงานดนตรี{cultural}หรือไม่?', 'ศิลปิน{adjective}ที่คุณชอบคือใคร?'],
+                family: ['ประเพณีครอบครัว{adjective}ในช่วง{time}คืออะไร?', 'คุณฉลองกับครอบครัวที่{place}อย่างไร?', 'งานครอบครัว{cultural}ที่คุณชอบคืออะไร?'],
+                work_school: ['โปรเจกต์{adjective}ที่คุณทำที่{place}คืออะไร?', 'คุณจัดการงาน{type}ในช่วง{time}อย่างไร?', 'แง่มุม{cultural}ของงานหรือโรงเรียนคุณคืออะไร?'],
+                nostalgia: ['ความทรงจำ{adjective}จากวัยเด็กที่{place}คืออะไร?', 'เกม{type}ที่คุณเล่นในช่วง{time}คืออะไร?', 'เทรนด์{cultural}ที่คุณคิดถึงคืออะไร?'],
+                future: ['เป้าหมาย{adjective}ที่คุณมีในช่วง{time}คืออะไร?', 'คุณอยากอยู่ที่{place}ในอนาคตที่ไหน?', 'ความฝัน{cultural}ของคุณคืออะไร?'],
+                hypothetical: ['ถ้าคุณไป{place}ได้ คุณจะทำอะไร?', 'พลังวิเศษ{type}แบบไหนที่{adjective}?', 'ลองจินตนาการสถานการณ์{cultural} คุณจะเลือกอะไร?'],
+                problem_solving: ['คุณจะแก้ปัญหา{type}ที่{place}อย่างไร?', 'วิธีแก้ปัญหา{adjective}ที่ได้ผลในช่วง{time}คืออะไร?', 'วิธี{cultural}ในการแก้ปัญหาคืออะไร?'],
+                humor: ['เรื่องตลก{adjective}ที่คุณได้ยินที่{place}คืออะไร?', 'คุณชอบอารมณ์ขัน{type}ในช่วง{time}หรือไม่?', 'เรื่องตลก{cultural}ที่คุณรู้คืออะไร?'],
+                philosophy: ['ความคิด{adjective}ที่คุณมีที่{place}คืออะไร?', 'คุณแสวงหาความหมาย{type}ในช่วง{time}อะไร?', 'แนวคิดปรัชญา{cultural}ที่คุณครุ่นคิดคืออะไร?'],
+                fact_finding: ['ข้อเท็จจริง{adjective}ที่คุณเรียนรู้ที่{place}คืออะไร?', 'หัวข้อ{type}ที่คุณสงสัยในช่วง{time}คืออะไร?', 'ข้อเท็จจริง{cultural}ที่คุณค้นพบคืออะไร?']
+            },
+            'Advice & Support': {
+                self_help: ['วิธี{adjective}ในการรักษาแรงจูงใจที่{place}คืออะไร?', 'คุณจัดการกับความเครียด{type}ในช่วง{time}อย่างไร?', 'เคล็ดลับการช่วยเหลือตัวเอง{cultural}คืออะไร?'],
+                personal_dev: ['ทักษะ{adjective}ที่คุณกำลังสร้างที่{place}คืออะไร?', 'คุณแสวงหาการเติบโต{type}ในช่วง{time}อะไร?', 'แนวคิดการพัฒนาตัวเอง{cultural}คืออะไร?'],
+                emotional: ['วิธี{adjective}ในการทำให้อารมณ์ดีขึ้นที่{place}คืออะไร?', 'คุณจัดการกับอารมณ์{type}ในช่วง{time}อย่างไร?', 'วิธีสนับสนุนทางอารมณ์{cultural}คืออะไร?'],
+                cultural: ['บทเรียนทางวัฒนธรรม{adjective}จาก{place}คืออะไร?', 'งานวัฒนธรรม{type}ที่คุณเข้าร่วมในช่วง{time}คืออะไร?', 'ประเพณี{cultural}ที่คุณให้คุณค่าคืออะไร?'],
+                parenting: ['เคล็ดลับการเลี้ยงลูก{adjective}สำหรับ{place}คืออะไร?', 'คุณจัดการกับความท้าทาย{type}ในการเลี้ยงลูกในช่วง{time}อย่างไร?', 'แนวทางการเลี้ยงลูก{cultural}ที่คุณปฏิบัติคืออะไร?'],
+                work_advice: ['เคล็ดลับอาชีพ{adjective}สำหรับ{place}คืออะไร?', 'คุณจัดการกับปัญหางาน{type}ในช่วง{time}อย่างไร?', 'แนวทางอาชีพ{cultural}คืออะไร?'],
+                transitions: ['วิธี{adjective}ในการปรับตัวที่{place}คืออะไร?', 'คุณจัดการกับการเปลี่ยนแปลง{type}ในช่วง{time}อย่างไร?', 'กลยุทธ์การเปลี่ยนผ่าน{cultural}คืออะไร?'],
+                addiction: ['วิธีการฟื้นตัว{adjective}ที่{place}คืออะไร?', 'คุณจัดการกับการต่อสู้{type}ในช่วง{time}อย่างไร?', 'ระบบสนับสนุน{cultural}สำหรับการฟื้นตัวคืออะไร?'],
+                identity: ['แง่มุม{adjectivensult: ['เคล็ดลับสุขภาพจิต{adjective}สำหรับ{place}คืออะไร?', 'คุณจัดการกับความคิด{type}ในช่วง{time}อย่างไร?', 'เทคนิคการมีสติ{cultural}คืออะไร?'],
+                business_insights: ['กลยุทธ์ธุรกิจ{adjective}สำหรับ{place}คืออะไร?', 'คุณจัดการกับความเสี่ยง{type}ในช่วง{time}อย่างไร?', 'ข้อมูลเชิงลึกธุรกิจ{cultural}คืออะไร?']
+            },
+            'Information-Seeking': {
+                travel: ['จุดหมาย{adjective}ที่{place}คืออะไร?', 'คุณชอบการเดินทาง{type}ในช่วง{time}หรือไม่?', 'สถานที่ท่องเที่ยว{cultural}ที่คุณแนะนำคืออะไร?'],
+                cooking: ['สูตร{adjective}จาก{place}คืออะไร?', 'คุณทำอาหาร{type}ในช่วง{time}อะไร?', 'เคล็ดลับการทำอาหาร{cultural}คืออะไร?'],
+                entertainment: ['รายการ{adjective}ที่{place}คืออะไร?', 'คุณชอบความบันเทิง{type}ในช่วง{time}หรือไม่?', 'เทรนด์ความบันเทิง{cultural}คืออะไร?'],
+                sports: ['กีฬา{adjective}ที่น่าดูที่{place}คืออะไร?', 'คุณติดตามเกม{type}ในช่วง{time}หรือไม่?', 'งานกีฬา{cultural}ที่คุณชอบคืออะไร?'],
+                diy: ['โปรเจกต์ DIY{adjective}สำหรับ{place}คืออะไร?', 'คุณทำการปรับปรุง{type}ในช่วง{time}อะไร?', 'ไอเดียงานฝีมือ{cultural}คืออะไร?'],
+                finance: ['เคล็ดลับการออม{adjective}สำหรับ{place}คืออะไร?', 'คุณใช้การจัดงบประมาณ{type}ในช่วง{time}อะไร?', 'แนวทางการเงิน{cultural}คืออะไร?'],
+                business_info: ['ไอเดียธุรกิจ{adjective}สำหรับ{place}คืออะไร?', 'โมเดล{type}ที่ได้ผลในช่วง{time}คืออะไร?', 'แนวทางธุรกิจ{cultural}คืออะไร?'],
+                tech: ['อุปกรณ์{adjective}สำหรับ{place}คืออะไร?', 'คุณติดตามเทคโนโลยี{type}ในช่วง{time}อะไร?', 'นวัตกรรมเทคโนโลยี{cultural}ที่คุณเห็นคืออะไร?'],
+                general_knowledge: ['ข้อเท็จจริง{adjective}ที่คุณเรียนรู้เกี่ยวกับ{place}คืออะไร?', 'คุณแสวงหาความรู้{type}ในช่วง{time}อะไร?', 'เกร็ดความรู้{cultural}ที่คุณรู้คืออะไร?'],
+                                civics: ['ประเด็นพลเมือง{adjective}ที่{place}คืออะไร?', 'คุณติดตามนโยบาย{type}ในช่วง{time}อะไร?', 'หน้าที่พลเมือง{cultural}ที่คุณให้คุณค่าคืออะไร?'],
+
+                politics: ['หัวข้อการเมือง{adjective}ที่{place}คืออะไร?', 'คุณเข้าร่วมการอภิปราย{type}ในช่วง{time}อะไร?', 'มุมมองการเมือง{cultural}ที่คุณได้ยินคืออะไร?']
+
+            },
+
+            'Educational': {
+
+                meditation: ['การฝึกสมาธิ{adjective}สำหรับ{place}คืออะไร?', 'คุณฝึกสติ{type}ในช่วง{time}อะไร?', 'เทคนิคการทำสมาธิ{cultural}คืออะไร?'],
+
+                psychology: ['แนวคิดจิตวิทยา{adjective}จาก{place}คืออะไร?', 'การศึกษาจิต{type}ที่คุณสนใจในช่วง{time}คืออะไร?', 'ข้อมูลเชิงลึกทางจิตวิทยา{cultural}คืออะไร?'],
+
+                virtual_trip: ['จุดหมายเสมือน{adjective}ที่{place}คืออะไร?', 'คุณชอบทัวร์เสมือน{type}ในช่วง{time}อะไร?', 'ประสบการณ์เสมือน{cultural}ที่คุณเคยมีคืออะไร?']
+
+            }
+
+        };
+
+        const fillers = {
+
+            activity: ['activity', 'hobby', 'pastime', 'leisure'],
+
+            time: ['weekends', 'evenings', 'holidays', 'Loy Krathong'],
+
+            cultural: ['Thai', 'local', 'traditional', 'Isaan'],
+
+            example: ['Thai dance', 'cooking khao soi', 'bamboo weaving', 'making krathongs'],
+
+            adjective: ['relaxing', 'fun', 'lazy', 'festive'],
+
+            type: ['type of', 'kind of', 'style of'],
+
+            occasion: ['friends', 'family', 'a party', 'Songkran'],
+
+            flavor1: ['spicy', 'sweet', 'salty'],
+
+            flavor2: ['sour', 'mild', 'bitter'],
+
+            place: ['street', 'market', 'local', 'temple fair']
+
+        };
+
+        weightValue.textContent = `${dynamicWeight.value}%`;
+
+        dynamicWeight.addEventListener('input', () => {
+
+            weightValue.textContent = `${dynamicWeight.value}%`;
+
+            showSuggestion(); // Immediate preview on slider adjustment
+
+        });
+
+        window.addEventListener('load', () => {
+
+            const lastTopic = localStorage.getItem('lastTopic');
+
+            if (lastTopic) {
+
+                select.value = lastTopic;
+
+                showSuggestion();
+
+            }
+
+        });
+
+        select.addEventListener('change', () => {
+
+            localStorage.setItem('lastTopic', select.value);
+
+            showSuggestion();
+
+        });
+
+        select.addEventListener('keydown', (e) => {
+
+            if (e.key === 'Enter') showSuggestion();
+
+        });
+
+        function getCategory(topic) {
+
+            return Object.keys(categoryMap).find(category => categoryMap[category].includes(topic)) || '';
+
+        }
+
+        function addThaiFlair(prompt) {
+
+            if (Math.random() < 0.2 && !prompt.toLowerCase().includes('thai')) {
+
+                const thaiAdditions = ['at a Thai festival', 'with a Thai twist', 'in a Thai village', 'like during Songkran', 'during Loy Krathong'];
+
+                return `${prompt} ${thaiAdditions[Math.floor(Math.random() * thaiAdditions.length)]}`;
+
+            }
+
+            return prompt;
+
+        }
+
+        const recentlyUsedPrompts = new Set();
+
+        function clearRecentPromptHistory() {
+
+            if (recentlyUsedPrompts.size > 5) {
+
+                recentlyUsedPrompts.clear();
+
+            }
+
+        }
+
+        function getUniquePrompt(prompts) {
+
+            let attempts = 0;
+
+            let suggestion;
+
+            do {
+
+                suggestion = prompts[Math.floor(Math.random() * prompts.length)];
+
+                attempts++;
+
+            } while (recentlyUsedPrompts.has(suggestion) && attempts < 10);
+
+            recentlyUsedPrompts.add(suggestion);
+
+            clearRecentPromptHistory();
+
+            return suggestion;
+
+        }
+
+        function generateDynamicPrompt(category, subCategory) {
+
+            const templates = (currentLang === 'en' ? dynamicTemplates : dynamicTemplatesThai)[category][subCategory] || ['What’s something fun about {type}?'];
+
+            let prompt = templates[Math.floor(Math.random() * templates.length)];
+
+            for (const key in fillers) {
+
+                if (prompt.includes(`{${key}}`)) {
+
+                    const options = fillers[key];
+
+                    const randomOption = options[Math.floor(Math.random() * options.length)];
+
+                    prompt = prompt.replace(`{${key}}`, randomOption);
+
+                }
+
+            }
+
+            return addThaiFlair(prompt);
+
+        }
+
+        function toggleLanguage(lang) {
+
+            currentLang = lang;
+
+            showSuggestion();
+
+        }
+
+        function showSuggestion() {
+
+            const selectedValue = select.value;
+
+            console.log('Selected Topic:', selectedValue); // Debugging log
+
+            const prompts = currentLang === 'en' ? basePrompts : basePromptsThai;
+
+            if (selectedValue && prompts[selectedValue]) {
+
+                const mainCategory = getCategory(selectedValue);
+
+                let suggestion;
+
+                const useDynamic = Math.random() < (dynamicWeight.value / 100);
+
+                if (useDynamic) {
+
+                    suggestion = generateDynamicPrompt(mainCategory, selectedValue);
+
+                } else {
+
+                    suggestion = getUniquePrompt(prompts[selectedValue]);
+
+                }
+
+                console.log('Generated Suggestion:', suggestion); // Debugging log
+
+                suggestionDiv.innerHTML = `<p>Suggested Topic: ${suggestion}</p>`;
+
+                suggestionDiv.classList.remove('show');
+
+                void suggestionDiv.offsetWidth; // Trigger reflow to enable animation
+
+                suggestionDiv.classList.add('show');
+
+            } else {
+
+                console.log('Invalid Topic or Missing Prompts'); // Debugging log
+
+                suggestionDiv.innerHTML = currentLang === 'en' ? '<p>Please select a valid topic.</p>' : '<p>กรุณาเลือกหัวข้อที่ถูกต้อง</p>';
+
+                suggestionDiv.classList.add('show');
+
+            }
+
+        }
+
+        function showMultipleSuggestions(count) {
+
+            const selectedValue = select.value;
+
+            console.log('Selected Topic for Multiple:', selectedValue); // Debugging log
+
+            const prompts = currentLang === 'en' ? basePrompts : basePromptsThai;
+
+            if (selectedValue && prompts[selectedValue]) {
+
+                const mainCategory = getCategory(selectedValue);
+
+                const suggestions = new Set();
+
+                while (suggestions.size < Math.min(count, prompts[selectedValue].length)) {
+
+                    const useDynamic = Math.random() < (dynamicWeight.value / 100);
+
+                    const suggestion = useDynamic
+
+                        ? generateDynamicPrompt(mainCategory, selectedValue)
+
+                        : getUniquePrompt(prompts[selectedValue]);
+
+                    suggestions.add(suggestion);
+
+                }
+
+                console.log('Generated Multiple Suggestions:', [...suggestions]); // Debugging log
+
+                suggestionDiv.innerHTML = [...suggestions].map(s => `<p>Suggested Topic: ${s}</p>`).join('');
+
+                suggestionDiv.classList.add('show');
+
+            } else {
+
+                console.log('Invalid Topic or Missing Prompts for Multiple'); // Debugging log
+
+                suggestionDiv.innerHTML = currentLang === 'en' ? '<p>Please select a valid topic.</p>' : '<p>กรุณาเลือกหัวข้อที่ถูกต้อง</p>';
+
+                suggestionDiv.classList.add('show');
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
