@@ -1,0 +1,137 @@
+NOTICE
+
+ThannxAI Enhanced Conversation Topic Selector
+Copyright 2024 Thanattsitt Thanatt (ThannxAI)
+
+This product includes software developed by Thanattsitt Thanatt (ThannxAI)
+and the open-source community.
+
+================================================================================
+
+THIRD-PARTY NOTICES
+
+This software contains components from the following open-source projects:
+
+1. Font Awesome Free
+   Copyright (c) Fonticons, Inc.
+   Licensed under Font Awesome Free License
+   https://fontawesome.com/license/free
+
+2. Animate.css
+   Copyright (c) Daniel Eden
+   Licensed under MIT License
+   https://github.com/animate-css/animate.css
+
+3. Notyf
+   Copyright (c) Carles Capellas
+   Licensed under MIT License
+   https://github.com/caroso1222/notyf
+
+4. Lodash
+   Copyright (c) JS Foundation and other contributors
+   Licensed under MIT License
+   https://lodash.com/
+
+5. Moment.js
+   Copyright (c) JS Foundation and other contributors
+   Licensed under MIT License
+   https://momentjs.com/
+
+6. jsPDF
+   Copyright (c) James Hall
+   Licensed under MIT License
+   https://github.com/parallax/jsPDF
+
+7. Vite
+   Copyright (c) Evan You and Vite contributors
+   Licensed under MIT License
+   https://vitejs.dev/
+
+8. Inter Font
+   Copyright (c) Rasmus Andersson
+   Licensed under SIL Open Font License 1.1
+   https://rsms.me/inter/
+
+9. Poppins Font
+   Copyright (c) Indian Type Foundry, Jonny Pinhorn
+   Licensed under SIL Open Font License 1.1
+   https://fonts.google.com/specimen/Poppins
+
+================================================================================
+
+ATTRIBUTION REQUIREMENTS
+
+When redistributing this software or creating derivative works, you must:
+
+1. Include this NOTICE file
+2. Retain all copyright notices
+3. Include the LICENSE file
+4. Provide attribution to "Thanattsitt Thanatt (ThannxAI)"
+5. Include a link to the original repository:
+   https://github.com/thannxai/conversation-selector
+
+================================================================================
+
+TRADEMARK NOTICE
+
+The following are trademarks of Thanattsitt Thanatt:
+- ThannxAI
+- Enhanced Conversation Topic Selector
+- ThannxAI logo and branding elements
+
+Use of these trademarks requires explicit written permission, except for
+attribution purposes as required by the license.
+
+================================================================================
+
+EXPORT CONTROL
+
+This software may be subject to export control laws and regulations in
+various jurisdictions. Users are responsible for compliance with all
+applicable export control laws.
+
+================================================================================
+
+PRIVACY NOTICE
+
+This software is designed with privacy in mind:
+- No personal data is collected without explicit consent
+- All data processing follows privacy best practices
+- Users retain full control over their data
+- Analytics are privacy-first and anonymized
+
+For full privacy policy, visit: https://thannx.ai/privacy
+
+================================================================================
+
+SECURITY
+
+For security vulnerabilities, please report to: security@thannx.ai
+
+Do not report security vulnerabilities through public GitHub issues.
+
+================================================================================
+
+SUPPORT
+
+For support and questions:
+- GitHub Issues: https://github.com/thannxai/conversation-selector/issues
+- Email: support@thannx.ai
+- Documentation: https://docs.thannx.ai
+
+================================================================================
+
+CONTACT INFORMATION
+
+Thanattsitt Thanatt (ThannxAI)
+Email: legal@thannx.ai
+Website: https://thannx.ai
+GitHub: https://github.com/ThannxAI
+
+================================================================================
+
+This NOTICE file is part of the ThannxAI Enhanced Conversation Topic Selector
+and must be included in all copies or substantial portions of the Software.
+
+Last Updated: December 1, 2024
+Version: 2.1.0
