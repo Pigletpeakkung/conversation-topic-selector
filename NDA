@@ -1,0 +1,731 @@
+# 📋 **NON-DISCLOSURE AGREEMENT (NDA)**
+
+> **🛡️ This Non-Disclosure Agreement is protected by copyright**  
+> **Copyright © 2024 Thanattsitt Thanatt (ThannxAI). All rights reserved.**
+
+---
+
+## 📄 **ThannxAI Enhanced Conversation Topic Selector**
+### **Mutual Non-Disclosure Agreement**
+
+**Effective Date:** December 1, 2024  
+**Version:** 2.1.0  
+**Jurisdiction:** Thailand
+
+---
+
+## 📋 **Table of Contents**
+
+1. [🤝 Parties and Purpose](#-parties-and-purpose)
+2. [📖 Definitions](#-definitions)
+3. [🔒 Confidential Information](#-confidential-information)
+4. [🛡️ Obligations and Restrictions](#-obligations-and-restrictions)
+5. [✅ Permitted Disclosures](#-permitted-disclosures)
+6. [⏰ Term and Duration](#-term-and-duration)
+7. [🔄 Return of Information](#-return-of-information)
+8. [⚖️ Legal Remedies](#-legal-remedies)
+9. [🌍 General Provisions](#-general-provisions)
+10. [✍️ Signature Section](#-signature-section)
+
+---
+
+## 🤝 **Parties and Purpose**
+
+### **1.1 Parties**
+
+**Disclosing Party:**
+```
+Legal Name: Thanattsitt Thanatt (ThannxAI)
+Business Type: Technology Company
+Address: [Business Address]
+         Bangkok, Thailand
+Email: legal@thannx.ai
+Phone: [Contact Number]
+```
+
+**Receiving Party:**
+```
+Legal Name: _________________________
+Business Type: _______________________
+Address: ___________________________
+        ___________________________
+Email: _____________________________
+Phone: _____________________________
+```
+
+### **1.2 Purpose of Disclosure**
+
+This Agreement governs the disclosure of confidential information in connection with:
+
+**☐ Business Partnership Discussions**
+- Joint venture exploration
+- Strategic alliance negotiations
+- Partnership opportunity evaluation
+- Collaboration framework development
+
+**☐ Technology Integration**
+- API integration discussions
+- Technical architecture review
+- System compatibility assessment
+- Development collaboration
+
+**☐ Investment Discussions**
+- Funding round participation
+- Due diligence processes
+- Valuation discussions
+- Investment term negotiations
+
+**☐ Vendor/Service Provider Relationship**
+- Service provider evaluation
+- Contract negotiations
+- Technical specifications review
+- Implementation planning
+
+**☐ Employment/Consulting Opportunities**
+- Executive recruitment
+- Technical consulting
+- Advisory board participation
+- Employment negotiations
+
+**☐ Research and Development**
+- Joint research projects
+- Technology sharing
+- Innovation collaboration
+- Academic partnerships
+
+**☐ Merger and Acquisition**
+- Company acquisition discussions
+- Asset purchase negotiations
+- Due diligence processes
+- Integration planning
+
+**☐ Other:** ________________________________
+
+### **1.3 Business Context**
+
+**Project Name:** _____________________________
+**Expected Duration:** ________________________
+**Key Stakeholders:** _________________________
+**Primary Objectives:** _______________________
+
+---
+
+## 📖 **Definitions**
+
+### **2.1 Key Terms**
+
+**"Confidential Information"** means any and all non-public, proprietary, or confidential information disclosed by one party to the other, whether orally, in writing, electronically, or in any other form.
+
+**"Disclosing Party"** means the party disclosing Confidential Information.
+
+**"Receiving Party"** means the party receiving Confidential Information.
+
+**"Representatives"** means employees, officers, directors, agents, consultants, advisors, and other authorized representatives.
+
+**"ThannxAI Technology"** refers to the Enhanced Conversation Topic Selector and related intellectual property.
+
+### **2.2 Scope Clarifications**
+
+**"Written Information"** includes:
+- Documents, reports, and presentations
+- Electronic files and databases
+- Source code and technical specifications
+- Business plans and financial data
+- Email communications and digital records
+
+**"Oral Information"** includes:
+- Verbal communications and discussions
+- Presentations and demonstrations
+- Phone calls and video conferences
+- Training sessions and workshops
+
+**"Visual Information"** includes:
+- Demonstrations of technology
+- Facility tours and observations
+- Prototype reviews
+- User interface mockups
+
+---
+
+## 🔒 **Confidential Information**
+
+### **3.1 Categories of Confidential Information**
+
+The following types of information shall be considered confidential:
+
+#### **💻 Technical Information**
+- **Source code** and software algorithms
+- **AI models** and training data
+- **Technical architecture** and system design
+- **API specifications** and documentation
+- **Performance metrics** and benchmarks
+- **Security protocols** and procedures
+- **Development roadmaps** and feature plans
+- **Bug reports** and vulnerability assessments
+
+#### **💰 Business Information**
+- **Financial statements** and projections
+- **Revenue data** and pricing models
+- **Customer lists** and user demographics
+- **Business strategies** and market analysis
+- **Marketing plans** and campaigns
+- **Partnership agreements** and terms
+- **Investment information** and funding details
+- **Competitive intelligence** and analysis
+
+#### **👥 Operational Information**
+- **Employee information** and organizational charts
+- **Operational procedures** and workflows
+- **Vendor relationships** and contracts
+- **Cost structures** and budget allocations
+- **Performance metrics** and KPIs
+- **Training materials** and procedures
+- **Legal documents** and compliance records
+- **Strategic decisions** and board resolutions
+
+#### **🔬 Proprietary Methods**
+- **Conversation generation algorithms**
+- **Personality typing methodologies**
+- **AI training techniques**
+- **User experience research**
+- **Quality assessment frameworks**
+- **Content filtering systems**
+- **Analytics and measurement tools**
+- **Cultural adaptation methods**
+
+### **3.2 Marking and Identification**
+
+#### **📋 Confidential Markings**
+Confidential Information may be marked as:
+- **"CONFIDENTIAL"**
+- **"PROPRIETARY"**
+- **"TRADE SECRET"**
+- **"THANNXAI CONFIDENTIAL"**
+- **"INTERNAL USE ONLY"**
+
+#### **🗣️ Oral Disclosures**
+For oral disclosures:
+- Information shall be identified as confidential at the time of disclosure
+- Written confirmation may be provided within 30 days
+- Context and circumstances may indicate confidential nature
+- Good faith determination by receiving party required
+
+#### **🔍 Inherently Confidential**
+The following are inherently confidential regardless of marking:
+- Source code and technical implementations
+- Customer data and user information
+- Financial performance data
+- Strategic business plans
+- Unpublished research and development
+
+### **3.3 Exclusions from Confidentiality**
+
+Information shall not be considered confidential if it:
+
+#### **📢 Public Domain Information**
+- Is publicly available at time of disclosure
+- Becomes publicly available through no fault of Receiving Party
+- Was publicly available before disclosure
+
+#### **🔄 Previously Known Information**
+- Was known to Receiving Party before disclosure
+- Can be demonstrated through written records
+- Was not acquired under obligation of confidentiality
+
+#### **🆓 Independently Developed**
+- Is independently developed by Receiving Party
+- Development occurs without use of Confidential Information
+- Can be proven through documentation and records
+
+#### **⚖️ Legally Required Disclosure**
+- Is required to be disclosed by law or regulation
+- Is disclosed pursuant to court order or subpoena
+- Is required for regulatory compliance
+- **Condition:** Prior notice to Disclosing Party required
+
+---
+
+## 🛡️ **Obligations and Restrictions**
+
+### **4.1 General Obligations**
+
+The Receiving Party agrees to:
+
+#### **🔐 Maintain Confidentiality**
+- Hold all Confidential Information in strict confidence
+- Use same degree of care as for own confidential information (minimum reasonable care)
+- Not disclose to any third parties without prior written consent
+- Limit access to need-to-know basis only
+
+#### **🎯 Limited Use**
+- Use Confidential Information solely for the stated purpose
+- Not use for any competitive advantage
+- Not incorporate into own products or services without permission
+- Not reverse engineer or attempt to derive trade secrets
+
+#### **🛡️ Protective Measures**
+- Implement appropriate security measures to protect information
+- Use password protection for electronic files
+- Store physical documents in secure locations
+- Monitor and control access to Confidential Information
+
+### **4.2 Employee and Representative Obligations**
+
+#### **👥 Third-Party Access**
+Before disclosing to Representatives, Receiving Party must:
+- Inform Representatives of confidential nature
+- Obtain written agreement to confidentiality obligations
+- Ensure Representatives understand restrictions
+- Remain liable for Representatives' compliance
+
+#### **📋 Authorized Personnel**
+Access limited to:
+- Employees with legitimate business need
+- Officers and directors requiring information for decision-making
+- Consultants and advisors under confidentiality agreements
+- Legal counsel bound by attorney-client privilege
+
+#### **🔍 Monitoring and Compliance**
+Receiving Party shall:
+- Monitor compliance with confidentiality obligations
+- Implement access controls and audit trails
+- Provide training on confidentiality requirements
+- Report any suspected breaches immediately
+
+### **4.3 Specific Technical Restrictions**
+
+#### **💻 Software and Code**
+For software-related Confidential Information:
+- No reverse engineering or decompilation
+- No creation of derivative works
+- No distribution or sharing of code
+- No benchmarking without written permission
+
+#### **🔬 AI and Algorithms**
+For AI-related information:
+- No replication of training methodologies
+- No extraction of model parameters
+- No creation of competing AI systems using disclosed techniques
+- No publication of research based on confidential algorithms
+
+#### **📊 Data and Analytics**
+For data-related information:
+- No aggregation with own data without permission
+- No analysis for competitive intelligence
+- No sharing of insights derived from data
+- Compliance with data protection regulations
+
+---
+
+## ✅ **Permitted Disclosures**
+
+### **5.1 Legal Disclosures**
+
+#### **⚖️ Legal Process**
+Disclosure may be required for:
+- Court orders and subpoenas
+- Regulatory investigations
+- Government inquiries
+- Legal proceedings involving either party
+
+**Procedure:**
+1. **Immediate notice** to Disclosing Party (if legally permitted)
+2. **Reasonable assistance** in seeking protective order
+3. **Limited disclosure** to minimum required
+4. **Confidential treatment** request when possible
+
+#### **🏛️ Regulatory Compliance**
+- Securities law disclosure requirements
+- Tax reporting obligations
+- Industry-specific regulatory requirements
+- International trade compliance
+
+### **5.2 Emergency Disclosures**
+
+#### **🚨 Safety and Security**
+Disclosure permitted for:
+- Immediate safety threats
+- Security breach notifications
+- Emergency response coordination
+- Public health and safety concerns
+
+#### **⚡ Business Continuity**
+- Critical business decisions requiring board approval
+- Emergency funding or investment needs
+- Crisis management situations
+- Legal compliance deadlines
+
+### **5.3 Pre-Approved Disclosures**
+
+#### **📝 Written Consent**
+With prior written consent from Disclosing Party:
+- Specific third-party disclosures
+- Publication of research or findings
+- Marketing or promotional use
+- Integration into public-facing materials
+
+#### **🤝 Implied Consent**
+In certain circumstances, consent may be implied:
+- Public demonstrations prearranged by Disclosing Party
+- Joint public statements or press releases
+- Collaborative presentations at conferences
+- Shared booth displays at trade shows
+
+---
+
+## ⏰ **Term and Duration**
+
+### **6.1 Agreement Term**
+
+#### **📅 Initial Term**
+This Agreement shall commence on the Effective Date and continue for:
+
+**☐ Specific Duration**
+- **Term:** _____ years from the Effective Date
+- **Automatic Renewal:** ☐ Yes ☐ No
+- **Renewal Period:** _____ years
+
+**☐ Project-Based Duration**
+- **Until completion** of the stated purpose
+- **Expected completion:** _______________
+- **Maximum duration:** _____ years
+
+**☐ Indefinite Term**
+- **Continues indefinitely** until terminated
+- **Termination notice required:** _____ days
+- **Minimum term:** _____ years
+
+#### **🔄 Termination Rights**
+Either party may terminate this Agreement:
+- With _____ days written notice to the other party
+- Immediately upon material breach by the other party
+- By mutual written consent
+- Upon completion of stated purpose
+
+### **6.2 Survival of Obligations**
+
+#### **♾️ Perpetual Obligations**
+The following obligations survive termination indefinitely:
+- Confidentiality obligations for trade secrets
+- Non-disclosure of proprietary information
+- Return or destruction of Confidential Information
+- Restrictions on use of disclosed information
+
+#### **⏳ Limited Duration Obligations**
+The following obligations survive for:
+- **General confidentiality:** _____ years after termination
+- **Non-use obligations:** _____ years after termination
+- **Return obligations:** 30 days after termination
+- **Notification obligations:** _____ years after termination
+
+### **6.3 Post-Termination Procedures**
+
+#### **📋 Immediate Actions**
+Upon termination:
+1. **Cease use** of all Confidential Information
+2. **Notify all Representatives** of termination
+3. **Secure all** Confidential Information
+4. **Prepare for return** or destruction
+
+#### **📦 Return Process**
+Receiving Party shall within 30 days:
+- Return all documents and materials
+- Delete all electronic copies
+- Destroy all derivatives and copies
+- Provide written certification of compliance
+
+---
+
+## 🔄 **Return of Information**
+
+### **7.1 Return Obligations**
+
+#### **📤 Materials to be Returned**
+Upon termination or request, Receiving Party shall return:
+- **Original documents** and materials
+- **Copies in any form** (physical, electronic, digital)
+- **Derivative works** created from Confidential Information
+- **Notes and summaries** containing Confidential Information
+- **Any storage media** containing Confidential Information
+
+#### **🗑️ Destruction Requirements**
+For information that cannot be returned:
+- **Secure destruction** using approved methods
+- **Certification of destruction** provided to Disclosing Party
+- **Witness verification** for highly sensitive materials
+- **Compliance with data protection laws**
+
+### **7.2 Retention Exceptions**
+
+#### **📁 Legal Retention**
+Receiving Party may retain copies if:
+- **Required by law** or regulation
+- **Needed for legal compliance** (e.g., audit requirements)
+- **Necessary for litigation** holds
+- **Standard backup procedures** (with continued confidentiality)
+
+#### **🔒 Continued Obligations**
+For retained information:
+- **Same confidentiality obligations** apply
+- **Access limited** to essential personnel only
+- **Regular review** for continued necessity
+- **Destruction when retention period expires**
+
+### **7.3 Electronic Information**
+
+#### **💾 Digital Destruction**
+For electronic information:
+- **Overwriting** of storage media
+- **Degaussing** of magnetic media
+- **Physical destruction** of storage devices when necessary
+- **Cloud storage** deletion with provider confirmation
+
+#### **🔄 Backup Systems**
+- **Notification** if information exists in backup systems
+- **Reasonable efforts** to delete from backups
+- **Automatic deletion** when backup retention periods expire
+- **Continued protection** until deletion occurs
+
+---
+
+## ⚖️ **Legal Remedies**
+
+### **8.1 Breach and Damages**
+
+#### **💰 Monetary Damages**
+In case of breach:
+- **Actual damages** suffered by Disclosing Party
+- **Lost profits** directly attributable to breach
+- **Unjust enrichment** gained by Receiving Party
+- **Costs and attorney fees** in pursuing remedies
+
+#### **⚡ Irreparable Harm**
+Parties acknowledge that breach would cause:
+- **Irreparable harm** not adequately compensated by money damages
+- **Immediate and continuing injury** to business and reputation
+- **Loss of competitive advantage** in the marketplace
+- **Justification for equitable relief**
+
+### **8.2 Equitable Relief**
+
+#### **🛑 Injunctive Relief**
+Disclosing Party entitled to:
+- **Temporary restraining orders**
+- **Preliminary and permanent injunctions**
+- **Specific performance** of obligations
+- **Other equitable relief** deemed appropriate by court
+
+#### **⚖️ No Bond Requirement**
+- **Waiver of bond** for injunctive relief
+- **Immediate relief** without posting security
+- **Ex parte relief** in urgent circumstances
+- **Expedited proceedings** for urgent matters
+
+### **8.3 Additional Remedies**
+
+#### **🔄 Cumulative Remedies**
+All remedies are:
+- **Cumulative** and not exclusive
+- **Available concurrently** with other remedies
+- **Subject to applicable law** and equity
+- **Preserved for future enforcement**
+
+#### **⚖️ Dispute Resolution**
+
+**Preferred Method:** ☐ Mediation ☐ Arbitration ☐ Litigation
+
+**Arbitration Details** (if selected):
+- **Institution:** ___________________________
+- **Location:** Bangkok, Thailand
+- **Rules:** ________________________________
+- **Number of Arbitrators:** _________________
+- **Language:** English and Thai
+
+**Litigation Details** (if selected):
+- **Jurisdiction:** Courts of Thailand
+- **Venue:** Bangkok, Thailand
+- **Governing Law:** Thai law
+- **Service of Process:** As allowed by law
+
+---
+
+## 🌍 **General Provisions**
+
+### **9.1 Miscellaneous**
+
+#### **📋 Entire Agreement**
+This Agreement:
+- **Constitutes entire agreement** between parties
+- **Supersedes all prior** agreements and understandings
+- **May only be modified** in writing signed by both parties
+- **Prevails over** conflicting terms in other agreements
+
+#### **🔗 Severability**
+If any provision is found invalid or unenforceable:
+- **Remaining provisions** continue in full force
+- **Invalid provision** modified to be enforceable
+- **Intent of parties** preserved to maximum extent
+- **No effect** on validity of other provisions
+
+#### **📝 Assignment**
+- **No assignment** without prior written consent
+- **Exception for affiliates** with advance notice
+- **Assignment in connection** with merger or acquisition permitted
+- **Successors and assigns** bound by Agreement
+
+#### **📢 Notices**
+All notices must be:
+- **In writing** and delivered personally, by certified mail, or email
+- **Sent to addresses** specified in this Agreement
+- **Effective upon receipt** or attempted delivery
+- **Updated addresses** provided with 30 days notice
+
+### **9.2 Governing Law**
+
+#### **⚖️ Applicable Law**
+This Agreement is governed by:
+- **Laws of Thailand** without regard to conflict of laws principles
+- **International conventions** where applicable
+- **Local regulations** for specific requirements
+- **Industry standards** where referenced
+
+#### **🌍 International Considerations**
+For cross-border transactions:
+- **Export control laws** compliance required
+- **Data protection regulations** must be followed
+- **Tax implications** responsibility of each party
+- **Currency exchange** at prevailing rates
+
+### **9.3 Counterparts and Execution**
+
+#### **✍️ Signature Methods**
+This Agreement may be executed:
+- **In counterparts** with same legal effect
+- **Electronic signatures** legally binding
+- **Scanned copies** acceptable for delivery
+- **Original signatures** to be exchanged when practical
+
+#### **📅 Effective Date**
+Agreement becomes effective:
+- **Upon execution** by last signing party
+- **Date specified** in Agreement header
+- **Upon delivery** of fully executed copy
+- **When conditions precedent** are satisfied
+
+---
+
+## ✍️ **Signature Section**
+
+### **📝 Party Signatures**
+
+#### **Disclosing Party**
+```
+THANATTSITT THANATT (THANNXAI)
+
+By: ________________________________
+Name: Thanattsitt Thanatt
+Title: Founder and CEO
+Date: ______________________________
+
+Witness: ____________________________
+Name: ______________________________
+Date: ______________________________
+```
+
+#### **Receiving Party**
+```
+[LEGAL NAME OF RECEIVING PARTY]
+
+By: ________________________________
+Name: ______________________________
+Title: _____________________________
+Date: ______________________________
+
+Witness: ____________________________
+Name: ______________________________
+Date: ______________________________
+```
+
+### **📋 Additional Information**
+
+#### **📞 Emergency Contacts**
+```
+Disclosing Party Emergency Contact:
+Name: ______________________________
+Phone: _____________________________
+Email: _____________________________
+
+Receiving Party Emergency Contact:
+Name: ______________________________
+Phone: _____________________________
+Email: _____________________________
+```
+
+#### **🔐 Designated Confidentiality Officers**
+```
+Disclosing Party Officer:
+Name: ______________________________
+Title: _____________________________
+Email: _____________________________
+
+Receiving Party Officer:
+Name: ______________________________
+Title: _____________________________
+Email: _____________________________
+```
+
+---
+
+## 📄 **Schedules and Exhibits**
+
+### **Schedule A: Specific Confidential Information Categories**
+```
+☐ Source Code and Software
+☐ AI Models and Algorithms
+☐ Training Data and Datasets
+☐ User Data and Analytics
+☐ Financial Information
+☐ Business Strategy Documents
+☐ Partnership Agreements
+☐ Technical Specifications
+☐ Research and Development
+☐ Other: ___________________________
+```
+
+### **Schedule B: Approved Recipients**
+```
+Name: ______________________________
+Title: _____________________________
+Role: ______________________________
+Confidentiality Agreement: ☐ Yes ☐ No
+
+Name: ______________________________
+Title: _____________________________
+Role: ______________________________
+Confidentiality Agreement: ☐ Yes ☐ No
+```
+
+### **Schedule C: Project Timeline**
+```
+Phase 1: ___________________________
+Start Date: _________________________
+End Date: ___________________________
+
+Phase 2: ___________________________
+Start Date: _________________________
+End Date: ___________________________
+
+Final Completion: ____________________
+```
+
+---
+
+**© 2024 Thanattsitt Thanatt (ThannxAI). All rights reserved.**
+
+*This Non-Disclosure Agreement template is provided for business purposes and may require customization for specific situations. Legal counsel should be consulted for complex agreements or specific legal requirements.*
+
+---
+
+**🔒 Confidentiality Reminder:** This document itself contains proprietary legal language and templates. Please respect intellectual property rights when using this template.
+
+**📧 Contact:** For questions about this NDA template or to execute an agreement, contact legal@thannx.ai
