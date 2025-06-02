@@ -1,52 +1,654 @@
-# http://www.gnu.org/software/automake
+# =============================================================================
+# ThannxAI Enhanced Conversation Topic Selector - .gitignore
+# Created by: Thanattsitt Thanatt (ThannxAI)
+# Version: 2.1.0
+# =============================================================================
 
-Makefile.in
-/ar-lib
-/mdate-sh
-/py-compile
-/test-driver
-/ylwrap
-.deps/
-.dirstamp
+# =============================================================================
+# NODE.JS & NPM
+# =============================================================================
 
-# http://www.gnu.org/software/autoconf
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-autom4te.cache
-/autoscan.log
-/autoscan-*.log
-/aclocal.m4
-/compile
-/config.cache
-/config.guess
-/config.h.in
-/config.log
-/config.status
-/config.sub
-/configure
-/configure.scan
-/depcomp
-/install-sh
-/missing
-/stamp-h1
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
 
-# https://www.gnu.org/software/libtool/
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
 
-/ltmain.sh
+# nyc test coverage
+.nyc_output/
 
-# http://www.gnu.org/software/texinfo
+# Grunt intermediate storage
+.grunt/
 
-/texinfo.tex
+# Bower dependency directory
+bower_components/
 
-# http://www.gnu.org/software/m4/
+# node-waf configuration
+.lock-wscript
 
-m4/libtool.m4
-m4/ltoptions.m4
-m4/ltsugar.m4
-m4/ltversion.m4
-m4/lt~obsolete.m4
+# Compiled binary addons
+build/Release/
 
-# Generated Makefile
-# (meta build system like autotools,
-# can automatically generate from config.status script
-# (which is called by configure script))
-Makefile
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.staging
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out/
+
+# Nuxt.js build / generate output
+.nuxt
+dist/
+
+# Gatsby files
+.cache/
+public/
+
+# Vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# =============================================================================
+# BUILD & DISTRIBUTION
+# =============================================================================
+
+# Production builds
+/build/
+/dist/
+/out/
+/public/build/
+
+# Build artifacts
+*.map
+*.min.js
+*.min.css
+
+# Webpack build outputs
+webpack-stats.json
+bundle-analyzer-report.html
+
+# Rollup build outputs
+rollup-stats.json
+
+# Parcel build outputs
+.parcel-cache/
+
+# Vite build outputs
+dist-ssr/
+*.local
+
+# =============================================================================
+# DEVELOPMENT TOOLS
+# =============================================================================
+
+# IDE and Editor files
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Atom
+.atom/
+
+# Brackets
+.brackets.json
+
+# =============================================================================
+# OPERATING SYSTEMS
+# =============================================================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd](esktop.ini)
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# LOGS & DEBUGGING
+# =============================================================================
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Debug logs
+debug.log
+error.log
+access.log
+
+# Application specific logs
+conversation-logs/
+analytics-logs/
+performance-logs/
+error-reports/
+
+# =============================================================================
+# TESTING
+# =============================================================================
+
+# Test results
+test-results/
+coverage/
+.nyc_output/
+junit.xml
+test-report.html
+
+# Jest
+jest-coverage/
+__tests__/__snapshots__/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Lighthouse reports
+lighthouse-reports/
+lighthouse.html
+
+# =============================================================================
+# CACHING & TEMPORARY FILES
+# =============================================================================
+
+# Cache directories
+.cache/
+.tmp/
+.temp/
+tmp/
+temp/
+
+# Service worker cache
+sw.js.map
+workbox-*.js
+workbox-*.js.map
+precache-manifest.*.js
+
+# Browser cache
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+
+# =============================================================================
+# SECURITY & CREDENTIALS
+# =============================================================================
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+.env.*.local
+
+# API keys and secrets
+secrets.json
+config/secrets.js
+.secrets/
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# SSH keys
+id_rsa
+id_rsa.pub
+known_hosts
+
+# GPG keys
+*.gpg
+*.asc
+
+# =============================================================================
+# DEPLOYMENT & HOSTING
+# =============================================================================
+
+# Vercel
+.vercel
+.vercel.json
+
+# Netlify
+.netlify/
+_redirects
+_headers
+
+# Firebase
+.firebase/
+.firebaserc
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Heroku
+.heroku/
+
+# AWS
+.aws/
+.elasticbeanstalk/
+
+# Docker
+.dockerignore
+Dockerfile.prod
+docker-compose.override.yml
+
+# Kubernetes
+*.yaml.local
+*.yml.local
+
+# =============================================================================
+# ANALYTICS & MONITORING
+# =============================================================================
+
+# Analytics data
+analytics/
+tracking/
+user-data/
+metrics/
+
+# Performance monitoring
+performance-reports/
+lighthouse-reports/
+web-vitals/
+
+# Error tracking
+sentry/
+.sentryclirc
+
+# =============================================================================
+# PWA & SERVICE WORKERS
+# =============================================================================
+
+# Service worker generated files
+sw.js
+workbox-*.js
+precache-manifest.*.js
+service-worker.js
+
+# PWA build artifacts
+manifest.json.backup
+icons-backup/
+
+# =============================================================================
+# EXPORT & BACKUP FILES
+# =============================================================================
+
+# User exports
+exports/
+downloads/
+backups/
+conversation-exports/
+
+# Database backups
+*.sql
+*.db
+*.sqlite
+*.sqlite3
+
+# JSON exports
+user-data-*.json
+favorites-backup-*.json
+analytics-export-*.json
+
+# =============================================================================
+# DOCUMENTATION
+# =============================================================================
+
+# Generated documentation
+docs/build/
+docs/.docusaurus/
+.docusaurus/
+
+# Storybook build outputs
+storybook-static/
+chromatic-build/
+
+# API documentation
+api-docs/
+swagger-ui/
+
+# =============================================================================
+# PACKAGE MANAGERS
+# =============================================================================
+
+# Lock files (choose one strategy)
+# Uncomment the ones you want to ignore
+
+# NPM
+# package-lock.json
+
+# Yarn
+# yarn.lock
+
+# PNPM
+# pnpm-lock.yaml
+
+# Bun
+# bun.lockb
+
+# =============================================================================
+# BUNDLERS & BUILD TOOLS
+# =============================================================================
+
+# Webpack
+webpack.config.*.js
+webpack-bundle-analyzer-report.html
+
+# Rollup
+rollup.config.*.js
+
+# Vite
+vite.config.*.js
+vite.config.*.ts
+
+# Parcel
+.parcel-cache/
+parcel-bundle-reports/
+
+# =============================================================================
+# LINTING & FORMATTING
+# =============================================================================
+
+# ESLint
+.eslintcache
+eslint-report.html
+
+# Prettier
+.prettiercache
+
+# Stylelint
+.stylelintcache
+
+# =============================================================================
+# THANNXAI SPECIFIC
+# =============================================================================
+
+# Application specific data
+/user-analytics/
+/conversation-cache/
+/ai-model-cache/
+/personality-data/
+/language-models/
+
+# Development data
+/dev-data/
+/test-conversations/
+/sample-exports/
+
+# Performance data
+/performance-benchmarks/
+/load-test-results/
+/memory-profiles/
+
+# User research
+/user-feedback/
+/usability-tests/
+/a-b-test-results/
+
+# Design assets (working files)
+/design-assets/working/
+*.sketch
+*.fig
+*.xd
+*.psd
+
+# Video and audio assets
+*.mp4
+*.avi
+*.mov
+*.mp3
+*.wav
+*.ogg
+
+# Large assets
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# =============================================================================
+# ACCESSIBILITY TESTING
+# =============================================================================
+
+# Accessibility reports
+a11y-reports/
+axe-reports/
+lighthouse-a11y/
+wave-reports/
+
+# Screen reader testing
+screen-reader-logs/
+nvda-logs/
+jaws-logs/
+
+# =============================================================================
+# INTERNATIONALIZATION
+# =============================================================================
+
+# Translation working files
+/translations/working/
+*.po~
+*.pot~
+
+# Translation memory
+*.tmx
+*.tbx
+
+# =============================================================================
+# CUSTOM CONFIGURATIONS
+# =============================================================================
+
+# Local configuration overrides
+config.local.js
+config.local.json
+settings.local.json
+.localrc
+
+# Personal notes and todos
+TODO.md
+NOTES.md
+PERSONAL.md
+.personal/
+
+# =============================================================================
+# MISCELLANEOUS
+# =============================================================================
+
+# Thumbnails
+*.thumb
+
+# Image metadata
+*.exif
+
+# Font cache
+.fontcache
+
+# Sass cache
+.sass-cache/
+
+# Compass
+.compass/
+
+# =============================================================================
+# KEEP THESE FILES (NEGATIVE PATTERNS)
+# =============================================================================
+
+# Keep important config files
+!.gitkeep
+!.gitignore
+!.editorconfig
+!.browserslistrc
+
+# Keep essential documentation
+!README.md
+!CHANGELOG.md
+!CONTRIBUTING.md
+!LICENSE
+!SECURITY.md
+
+# Keep configuration templates
+!config.example.js
+!.env.example
+!docker-compose.example.yml
+
+# Keep essential assets
+!assets/icons/
+!assets/screenshots/
+!src/assets/
+
+# =============================================================================
+# END OF .gitignore
+# =============================================================================
+
+# Note: This .gitignore is designed to be comprehensive for the ThannxAI
+# Enhanced Conversation Topic Selector project. Adjust patterns based on
+# your specific development workflow and requirements.
+#
+# For questions or suggestions, contact: contact@thannx.ai
+# Project: https://conversation-topics.thannx.ai
+# Creator: Thanattsitt Thanatt (ThannxAI)
