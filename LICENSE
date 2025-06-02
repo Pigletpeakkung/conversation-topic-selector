@@ -1,3 +1,192 @@
+MIT License
+
+Copyright (c) 2024 Thanattsitt Thanatt (ThannxAI)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+
+ADDITIONAL TERMS AND CONDITIONS
+
+1. ATTRIBUTION REQUIREMENTS
+   When redistributing this software or derivative works, you must:
+   a) Retain the above copyright notice
+   b) Include this license file
+   c) Provide clear attribution to "Thanattsitt Thanatt (ThannxAI)"
+   d) Include a link to the original repository: 
+      https://github.com/thannxai/conversation-selector
+
+2. TRADEMARK NOTICE
+   The following are trademarks of Thanattsitt Thanatt:
+   - "ThannxAI"
+   - "Enhanced Conversation Topic Selector"
+   - ThannxAI logo and branding elements
+   
+   Use of these trademarks requires explicit written permission from the 
+   copyright holder, except for attribution purposes as required above.
+
+3. COMMERCIAL USE
+   Commercial use is permitted under this license, but commercial users are
+   encouraged to:
+   a) Provide attribution in their product documentation
+   b) Consider contributing improvements back to the project
+   c) Respect the open-source nature of the project
+
+4. CONTRIBUTIONS
+   By contributing to this project, you agree that your contributions will be
+   licensed under the same MIT License terms.
+
+5. THIRD-PARTY COMPONENTS
+   This software includes third-party components with their own licenses:
+   
+   - Font Awesome Free (Font Awesome Free License)
+     Copyright (c) Fonticons, Inc.
+     https://fontawesome.com/license/free
+   
+   - Animate.css (MIT License)
+     Copyright (c) Daniel Eden
+     https://github.com/animate-css/animate.css
+   
+   - Notyf (MIT License)
+     Copyright (c) Carles Capellas
+     https://github.com/caroso1222/notyf
+   
+   - Lodash (MIT License)
+     Copyright (c) JS Foundation and other contributors
+     https://lodash.com/
+   
+   - Moment.js (MIT License)
+     Copyright (c) Tim Wood, Iskren Chernev, Moment.js contributors
+     https://momentjs.com/
+   
+   - jsPDF (MIT License)
+     Copyright (c) James Hall
+     https://github.com/parallax/jsPDF
+
+6. DATA PRIVACY
+   This software is designed with privacy in mind:
+   a) No personal data is collected without explicit user consent
+   b) All data processing follows GDPR and privacy best practices
+   c) Users retain full control over their data
+   d) Analytics are privacy-first and anonymized
+
+7. SECURITY
+   Users of this software should:
+   a) Keep the software updated to the latest version
+   b) Report security vulnerabilities responsibly to security@thannx.ai
+   c) Follow security best practices when deploying
+   d) Review and understand the security implications of any modifications
+
+8. SUPPORT AND WARRANTY DISCLAIMER
+   While this software is provided under the MIT License with no warranty,
+   the author provides community support through:
+   a) GitHub Issues for bug reports
+   b) GitHub Discussions for feature requests
+   c) Documentation and guides
+   d) Community forums and Discord
+   
+   Commercial support may be available separately - contact business@thannx.ai
+
+9. EXPORT COMPLIANCE
+   This software may be subject to export control laws and regulations.
+   Users are responsible for compliance with applicable laws in their
+   jurisdiction.
+
+10. GOVERNING LAW
+    This license shall be governed by and construed in accordance with the
+    laws of Thailand, without regard to its conflict of law provisions.
+
+================================================================================
+
+SPECIAL ACKNOWLEDGMENTS
+
+This project was created with the intention of fostering meaningful human
+connections through AI-assisted conversation. The author believes in the
+power of open-source software to bring people together and create positive
+impact in the world.
+
+Special thanks to:
+- The open-source community for inspiration and tools
+- Early users and testers who provided valuable feedback
+- Contributors who helped improve the project
+- The AI research community for advancing the field
+
+================================================================================
+
+CONTACT INFORMATION
+
+Copyright Holder: Thanattsitt Thanatt (ThannxAI)
+Email: legal@thannx.ai
+Website: https://thannx.ai
+GitHub: https://github.com/ThannxAI
+
+For licensing inquiries: licensing@thannx.ai
+For business inquiries: business@thannx.ai
+For security reports: security@thannx.ai
+
+================================================================================
+
+VERSION INFORMATION
+
+License Version: 1.0
+Effective Date: June 1, 2024
+Last Updated: December 1, 2024
+Software Version: 2.1.0
+
+This license applies to all versions of the ThannxAI Enhanced Conversation
+Topic Selector software released under version 2.1.0 and earlier.
+
+Future versions may include updated license terms, but will maintain
+compatibility with the MIT License framework.
+
+================================================================================
+
+HUMAN-READABLE SUMMARY
+
+This is a human-readable summary of (and not a substitute for) the license.
+
+You are free to:
+✅ Use the software for any purpose, including commercial use
+✅ Modify the software to suit your needs
+✅ Distribute copies of the software
+✅ Distribute modified versions of the software
+✅ Use the software in proprietary applications
+
+Under the following conditions:
+📋 Include the original copyright notice and license
+📋 Provide attribution to Thanattsitt Thanatt (ThannxAI)
+📋 Include a link to the original repository
+📋 Respect trademark restrictions
+
+Limitations:
+❌ No warranty is provided
+❌ Authors are not liable for damages
+❌ Trademark use requires permission (except for attribution)
+
+This summary is provided for convenience only and has no legal value.
+The full license text above is the legally binding document.
+
+================================================================================
+
+END OF LICENSE
+
+
 # MIT License
 
 **Copyright (c) 2024 Thanattsitt Thanatt (ThannxAI)**
