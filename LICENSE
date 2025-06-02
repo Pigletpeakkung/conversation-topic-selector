@@ -1,3 +1,284 @@
+# MIT License
+
+**Copyright (c) 2024 Thanattsitt Thanatt (ThannxAI)**
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 📄 **License Summary**
+
+This project is licensed under the **MIT License**, one of the most permissive open-source licenses available.
+
+### ✅ **What You CAN Do**
+
+- **✨ Use** the software for any purpose, including commercial applications
+- **🔧 Modify** the source code to suit your needs
+- **📤 Distribute** copies of the original or modified software
+- **💰 Sell** copies of the software or include it in commercial products
+- **🔀 Sublicense** the software under different terms
+- **🏢 Use in Private Projects** without any obligation to share changes
+- **🌐 Host** the application on your own servers
+- **📱 Create** derivative works and applications
+
+### ❌ **What You CANNOT Do**
+
+- **🚫 Hold the author liable** for any damages or issues
+- **🚫 Expect warranty** or guarantee of functionality
+- **🚫 Use without attribution** - you must include the copyright notice
+- **🚫 Remove license** information from copies or substantial portions
+
+### 📋 **Requirements**
+
+When using this software, you must:
+
+1. **📝 Include Copyright Notice**: The copyright notice and license text must be included in all copies or substantial portions of the software
+2. **🏷️ Preserve Attribution**: Credit must be given to the original author (Thanattsitt Thanatt - ThannxAI)
+3. **📄 Include License**: The full MIT license text must be included with distributions
+
+---
+
+## 🏷️ **Attribution Guidelines**
+
+### 📝 **Recommended Attribution**
+
+When using this software, please include attribution in one of the following ways:
+
+#### **In Source Code**
+```javascript
+/**
+ * ThannxAI Enhanced Conversation Topic Selector
+ * Copyright (c) 2024 Thanattsitt Thanatt (ThannxAI)
+ * Licensed under MIT License
+ * 
+ * Original project: https://conversation-topics.thannx.ai
+ * GitHub: https://github.com/thannxai/conversation-selector
+ */
+```
+
+#### **In Documentation**
+```markdown
+This project uses the ThannxAI Enhanced Conversation Topic Selector
+Created by Thanattsitt Thanatt (ThannxAI)
+Licensed under MIT License
+Source: https://github.com/thannxai/conversation-selector
+```
+
+#### **In User Interface**
+```html
+<!-- Footer or About section -->
+<p>
+    Powered by <a href="https://thannx.ai">ThannxAI</a> 
+    Conversation Technology
+</p>
+```
+
+#### **In Mobile Apps**
+```
+About > Third-Party Licenses > ThannxAI Conversation Selector
+Copyright (c) 2024 Thanattsitt Thanatt (ThannxAI)
+MIT License - https://opensource.org/licenses/MIT
+```
+
+---
+
+## 🔍 **License Compatibility**
+
+The MIT License is compatible with most other open-source licenses:
+
+### ✅ **Compatible Licenses**
+- **Apache 2.0** - Can be combined and distributed together
+- **BSD (2-Clause & 3-Clause)** - Fully compatible
+- **GPL v2/v3** - MIT code can be included in GPL projects
+- **LGPL** - Compatible for linking and inclusion
+- **ISC** - Very similar license, fully compatible
+- **Unlicense** - Public domain, compatible with everything
+
+### ⚠️ **Special Considerations**
+- **GPL Projects**: When including MIT code in GPL projects, the combined work must be distributed under GPL
+- **Commercial Use**: No restrictions on commercial use or proprietary derivatives
+- **Patent Rights**: MIT license doesn't explicitly grant patent rights (unlike Apache 2.0)
+
+---
+
+## 🌟 **Brand Usage Guidelines**
+
+### 🏢 **ThannxAI Brand**
+
+While the code is MIT licensed, the **"ThannxAI"** brand and associated trademarks have additional considerations:
+
+#### **✅ Permitted Brand Usage**
+- **Attribution**: Using "ThannxAI" in attribution and credits
+- **Reference**: Mentioning ThannxAI as the original creator
+- **Links**: Linking to ThannxAI website and profiles
+- **Academic**: Using in academic papers and research citations
+
+#### **❌ Restricted Brand Usage**
+- **Commercial Branding**: Using "ThannxAI" as your own brand name
+- **Endorsement**: Implying ThannxAI endorses your derivative work
+- **Confusion**: Creating confusion about the source or ownership
+- **Domain Names**: Registering domains with "ThannxAI" without permission
+
+#### **📞 Brand Permission**
+For commercial use of the ThannxAI brand beyond attribution:
+- **Contact**: [brand@thannx.ai](mailto:brand@thannx.ai)
+- **License**: Separate brand licensing available
+- **Partnership**: Collaboration opportunities available
+
+---
+
+## 📚 **Third-Party Licenses**
+
+This project includes third-party libraries with their own licenses:
+
+### 🎨 **Frontend Libraries**
+
+#### **Font Awesome 6.4.0**
+- **License**: Font Awesome Free License
+- **Usage**: Icons and visual elements
+- **Attribution**: Required for free version
+- **Link**: https://fontawesome.com/license/free
+
+#### **Animate.css 4.1.1**
+- **License**: MIT License
+- **Usage**: CSS animations and transitions
+- **Attribution**: Copyright (c) 2021 Daniel Eden
+- **Link**: https://github.com/animate-css/animate.css
+
+#### **Notyf 3.10.0**
+- **License**: MIT License
+- **Usage**: Toast notifications
+- **Attribution**: Copyright (c) 2018 Carles Capellas
+- **Link**: https://github.com/caroso1222/notyf
+
+#### **Lodash 4.17.21**
+- **License**: MIT License
+- **Usage**: Utility functions
+- **Attribution**: Copyright OpenJS Foundation and other contributors
+- **Link**: https://lodash.com/
+
+#### **Moment.js 2.29.4**
+- **License**: MIT License
+- **Usage**: Date and time manipulation
+- **Attribution**: Copyright (c) JS Foundation and other contributors
+- **Link**: https://momentjs.com/
+
+#### **jsPDF 2.5.1**
+- **License**: MIT License
+- **Usage**: PDF generation
+- **Attribution**: Copyright (c) 2010-2021 James Hall
+- **Link**: https://github.com/parallax/jsPDF
+
+### 🔤 **Fonts**
+
+#### **Google Fonts (Inter, Poppins)**
+- **License**: Open Font License (OFL)
+- **Usage**: Typography
+- **Attribution**: Not required but appreciated
+- **Link**: https://fonts.google.com/
+
+---
+
+## 🔄 **License Updates**
+
+### 📅 **Version History**
+
+#### **Version 2.1.0 (2024)**
+- **License**: MIT License
+- **Changes**: Initial open-source release
+- **Scope**: Full application and documentation
+
+#### **Future Considerations**
+- **Stability**: MIT license will remain for core functionality
+- **Extensions**: Premium features may have different licensing
+- **Enterprise**: Enterprise versions may include additional terms
+
+### 📢 **License Change Policy**
+
+- **Backward Compatibility**: Existing versions will maintain their license
+- **Notice Period**: 90 days notice for any license changes
+- **Grandfathering**: Current users can continue under existing terms
+- **Communication**: Changes announced via GitHub, website, and email
+
+---
+
+## ❓ **Frequently Asked Questions**
+
+### **Q: Can I use this in my commercial product?**
+**A:** Yes! The MIT license explicitly allows commercial use without any fees or royalties.
+
+### **Q: Do I need to open-source my modifications?**
+**A:** No, the MIT license doesn't require you to share your modifications or derivative works.
+
+### **Q: Can I remove the ThannxAI branding?**
+**A:** You can modify the UI, but you must maintain the copyright notice and attribution in the source code.
+
+### **Q: What if I find a security vulnerability?**
+**A:** Please report it responsibly to [security@thannx.ai](mailto:security@thannx.ai). The MIT license doesn't provide warranty, but we actively maintain security.
+
+### **Q: Can I sell this software?**
+**A:** Yes, you can sell copies or include it in commercial products. Just maintain the license and attribution.
+
+### **Q: What about patent protection?**
+**A:** The MIT license doesn't explicitly grant patent rights. For patent protection, consider Apache 2.0 licensed alternatives.
+
+### **Q: Can I use this in GPL projects?**
+**A:** Yes, MIT-licensed code can be included in GPL projects, but the combined work must be distributed under GPL.
+
+### **Q: Do I need permission to fork the repository?**
+**A:** No permission needed! Forking is encouraged under the MIT license.
+
+---
+
+## 📞 **License Support**
+
+### 🤝 **Getting Help**
+
+If you have questions about licensing:
+
+- **📧 Email**: [license@thannx.ai](mailto:license@thannx.ai)
+- **💬 GitHub**: Open an issue with the "license" label
+- **📚 Documentation**: Check our comprehensive docs
+- **🌐 Website**: Visit [thannx.ai/license](https://thannx.ai/license)
+
+### 🏢 **Commercial Support**
+
+For commercial licensing questions:
+
+- **📧 Business**: [business@thannx.ai](mailto:business@thannx.ai)
+- **🤝 Partnerships**: [partnerships@thannx.ai](mailto:partnerships@thannx.ai)
+- **🏢 Enterprise**: [enterprise@thannx.ai](mailto:enterprise@thannx.ai)
+
+### ⚖️ **Legal Disclaimer**
+
+This license summary is provided for convenience and is not legal advice. For legal questions, consult with a qualified attorney. The full MIT license text above is the authoritative license for this software.
+
+---
+
+**🌟 Thank you for respecting open-source licensing and supporting the ThannxAI project! 🌟**
+
+---
+
+*Last updated: December 2024*  
+*License version: MIT (unchanged since project inception)*  
+*For the most current license information, visit: https://github.com/thannxai/conversation-selector/blob/main/LICENSE*
+
 MIT License
 
 Copyright (c) 2025 Pigletpeakkung
